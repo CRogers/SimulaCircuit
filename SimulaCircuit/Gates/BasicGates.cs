@@ -6,7 +6,7 @@ namespace SimulaCircuit.Gates
     {
         protected override bool Func()
         {
-            return Inputs.Aggregate((a,b) => a && b);
+            return Inputs.Aggregate(true,(a,b) => a && b.Output);
         }
     }
 
@@ -14,7 +14,7 @@ namespace SimulaCircuit.Gates
     {
         protected override bool Func()
         {
-            return Inputs.Aggregate((a, b) => a || b);
+            return Inputs.Aggregate(false,(a,b) => a || b.Output);
         }
     }
 
@@ -22,7 +22,7 @@ namespace SimulaCircuit.Gates
     {
         protected override bool Func()
         {
-            return Inputs.Aggregate((a,b) => a ^ b);;
+            return Inputs.Aggregate(false,(a,b) => a ^ b.Output);
         }
     }
 
@@ -30,7 +30,7 @@ namespace SimulaCircuit.Gates
     {
         protected override bool Func()
         {
-            return !Inputs[0];
+            return !Inputs[0].Output;
         }
     }
 }

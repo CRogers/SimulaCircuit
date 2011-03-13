@@ -1,8 +1,13 @@
 ﻿namespace SimulaCircuit.Gates
 {
-    public abstract class Gate
+    public interface IOutput
     {
-        public bool[] Inputs { get; set; }
+        bool Output { get; }
+    }
+
+    public abstract class Gate : IOutput
+    {
+        public IOutput[] Inputs { get; set; }
 
         public bool Output 
         {
@@ -16,7 +21,7 @@
     {
         protected Gate1()
         {
-            Inputs = new bool[1];
+            Inputs = new IOutput[1];
         }
     }
 }
