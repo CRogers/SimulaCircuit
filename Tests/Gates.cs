@@ -12,7 +12,7 @@ namespace Tests
         [TestMethod]
         public void AndGate()
         {
-            var ag = new AndGate { Inputs = new IOutput[] { t, t, t, t, f } };
+            var ag = new AndGate(t, t, t, t, f);
             Assert.IsFalse(ag.Output);
 
             ag.Inputs = new[] {t,t,t,t,t};
@@ -22,7 +22,7 @@ namespace Tests
         [TestMethod]
         public void OrGate()
         {
-            var or = new OrGate { Inputs = new IOutput[] { t, t, t, t, f } };
+            var or = new OrGate(t, t, t, t, f);
             Assert.IsTrue(or.Output);
 
             or.Inputs = new[] { f, f, f, f, f };
@@ -35,7 +35,7 @@ namespace Tests
         [TestMethod]
         public void XorGate()
         {
-            var xg = new XorGate { Inputs = new IOutput[] { t, f, t } };
+            var xg = new XorGate(t, f, t);
             Assert.IsFalse(xg.Output);
 
             xg.Inputs = new IOutput[] { t, f, t, t };

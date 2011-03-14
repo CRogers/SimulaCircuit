@@ -9,6 +9,13 @@
     {
         public IOutput[] Inputs { get; set; }
 
+        protected Gate(){}
+
+        protected Gate(params IOutput[] inputs)
+        {
+            Inputs = inputs;
+        }
+
         public bool Output 
         {
             get { return Func(); }
@@ -22,6 +29,11 @@
         protected Gate1()
         {
             Inputs = new IOutput[1];
+        }
+
+        protected Gate1(IOutput input)
+        {
+            Inputs = new[] {input};
         }
     }
 }
