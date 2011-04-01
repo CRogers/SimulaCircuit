@@ -1,10 +1,5 @@
 ﻿namespace SimulaCircuit.Gates
 {
-    public interface IOutput
-    {
-        bool Output { get; }
-    }
-
     public abstract class Gate : IOutput
     {
         public IOutput[] Inputs { get; set; }

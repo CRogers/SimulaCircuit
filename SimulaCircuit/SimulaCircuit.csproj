@@ -44,7 +44,9 @@
     <Compile Include="Gates\Gate.cs" />
     <Compile Include="Gates\Outputs.cs" />
     <Compile Include="Gates\Wire.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalGenerators\Clock.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
