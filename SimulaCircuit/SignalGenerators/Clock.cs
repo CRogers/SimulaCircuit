@@ -7,22 +7,25 @@ namespace SimulaCircuit.SignalGenerators
     {
         private Timer timer = new Timer();
 
-        public bool output;
-        public bool Output
-        {
-            get { return output; }
-        }
+        public event Action Tick;
+        public ulong Step { get; private set; }
+
+        public bool Output { get; private set; }
 
         public Clock(double interval)
         {
             timer.Interval = interval;
-            timer.Elapsed += Tick;
+            timer.Elapsed += Tock;
             timer.Start();
         }
 
-        private void Tick(object o, EventArgs ea)
+
+        private void Tock(object o, EventArgs ea)
         {
-            output = !output;
+            Output = !Output;
+            Step++;
+            if(Tick != null)
+                Tick();
         }
     }
 }
