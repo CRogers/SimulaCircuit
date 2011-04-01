@@ -1,28 +1,17 @@
 ﻿using System;
-using System.Timers;
 
 namespace SimulaCircuit.SignalGenerators
 {
-    public class Clock : IOutput
+    public abstract class Clock : IOutput
     {
-        private Timer timer = new Timer();
-
         public event Action Tick;
         public event Action Tock;
-        public Action AfterAll;
-        public ulong Step { get; private set; }
 
-        public bool Output { get; private set; }
+        public Action AfterAll { get; set; }
+        public ulong Step { get; protected set; }
+        public bool Output { get; protected set; }
 
-        public Clock(double interval)
-        {
-            timer.Interval = interval;
-            timer.Elapsed += Do;
-            timer.Start();
-        }
-
-
-        private void Do(object o, EventArgs ea)
+        protected void Do()
         {
             Output = !Output;
             Step++;

@@ -48,6 +48,8 @@
     <Compile Include="IOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalGenerators\Clock.cs" />
+    <Compile Include="SignalGenerators\FastClock.cs" />
+    <Compile Include="SignalGenerators\TimerClock.cs" />
     <Compile Include="StateHolding\FlipFlop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

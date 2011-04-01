@@ -12,7 +12,7 @@ namespace Tests
     [TestClass]
     public class StateHolding
     {
-        Clock c = new Clock(1);
+        Clock c = new TimerClock(0.1);
         Wire t = new Wire(new True());
         Wire f = new Wire(new False());
         TimeSpan ts = new TimeSpan(1000);
