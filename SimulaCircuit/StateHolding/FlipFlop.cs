@@ -4,6 +4,8 @@ namespace SimulaCircuit.StateHolding
 {
     public class FlipFlop : IOutput
     {
+        private bool state;
+
         public Clock Clock { get; set; }
         public IOutput Input { get; set; }
 
@@ -15,7 +17,8 @@ namespace SimulaCircuit.StateHolding
             Output = input.Output;
 
             Clock = clock;
-            clock.Tick += () => Output = Input.Output;
+            clock.Tick += () => state = Input.Output;
+            clock.Tock += () => Output = state;
         }
     }
 }
