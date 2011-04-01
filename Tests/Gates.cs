@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimulaCircuit;
 using SimulaCircuit.Gates;
 
 namespace Tests
