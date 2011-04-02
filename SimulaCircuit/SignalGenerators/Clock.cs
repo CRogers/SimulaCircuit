@@ -11,7 +11,7 @@ namespace SimulaCircuit.SignalGenerators
         public ulong Step { get; protected set; }
         public bool Output { get; protected set; }
 
-        protected void Do()
+        protected virtual void Do()
         {
             Output = !Output;
             Step++;
