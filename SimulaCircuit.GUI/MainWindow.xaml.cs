@@ -19,24 +19,20 @@ namespace SimulaCircuit.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int tabItemCount = 0;
+        private TabCanvasManager tcm;
 
         public MainWindow()
         {
             InitializeComponent();
+            tcm = new TabCanvasManager(this);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-        }
-
-
-        private TabItem BuildTab(string header)
-        {
-            var ti = new TabItem{ Name="tiDraw" + tabItemCount++, Header=header };
-            tcDraw.Items.Add(ti);
-            return ti;
+            tcm.Add("test","Test");
+            tcm.Add("test2", "Test2");
         }
     }
+
+    
 }
