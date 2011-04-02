@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimulaCircuit;
 using SimulaCircuit.Gates;
@@ -28,16 +27,14 @@ namespace Tests
 
         private void WaitUntilReady()
         {
-            while(!ready)
-            {
-            }
+            while(!ready) ;
             ready = false;
         }
 
         [TestMethod]
-        public void FlipFlop()
+        public void DFlipFlop()
         {
-            FlipFlop ff = new FlipFlop(c, t);
+            DFlipFlop ff = new DFlipFlop(c, t, true);
             Assert.IsTrue(ff.Output);
 
             ff.Input = f;
@@ -53,9 +50,50 @@ namespace Tests
         }
 
         [TestMethod]
+        public void TFlipFlop()
+        {
+            var tff = new TFlipFlop(c, t, true);
+            Assert.IsTrue(tff.Output);
+
+            c.Go();
+            Assert.IsFalse(tff.Output);
+
+            tff.Input = f;
+            c.Go();
+            Assert.IsFalse(tff.Output);
+
+            tff.Input = t;
+            c.Go();
+            Assert.IsTrue(tff.Output);
+        }
+
+        [TestMethod]
+        public void JKFlipFlop()
+        {
+            var jkff = new JKFlipFlop(c, f, f);
+            Assert.IsFalse(jkff.Output);
+
+            c.Go();
+            Assert.IsFalse(jkff.Output);
+
+            jkff.J = t;
+            c.Go();
+            Assert.IsTrue(jkff.Output);
+
+            jkff.K = t;
+            c.Go();
+            Assert.IsFalse(jkff.Output);
+
+            jkff.J = t;
+            c.Go();
+            Assert.IsTrue(jkff.Output);
+
+        }
+
+        [TestMethod]
         public void ShiftRegister()
         {
-            var ffs = new FlipFlop(c, f).Unfold(ff => new FlipFlop(c, ff), max: 8).ToArray();
+            var ffs = new DFlipFlop(c, f).Unfold(ff => new DFlipFlop(c, ff), max: 8).ToArray();
             ffs[0].Input = t;
 
             for (int i = 0; i < 8; i++)
@@ -69,7 +107,7 @@ namespace Tests
         [TestMethod]
         public void LoopDevice()
         {
-            var ffs = new FlipFlop(c, f).Unfold(ff => new FlipFlop(c, ff), max: 8).ToArray();
+            var ffs = new DFlipFlop(c, f).Unfold(ff => new DFlipFlop(c, ff), max: 8).ToArray();
             ffs[0].Input = new Inverter(ffs[ffs.Length - 1]);
 
 
