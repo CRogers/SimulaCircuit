@@ -12,7 +12,7 @@ namespace Tests
     [TestClass]
     public class StateHolding
     {
-        Clock c = new TimerClock(0.1);
+        BlockingClock c = new BlockingClock();
         Wire t = new Wire(new True());
         Wire f = new Wire(new False());
         TimeSpan ts = new TimeSpan(1000);
@@ -41,14 +41,14 @@ namespace Tests
             Assert.IsTrue(ff.Output);
 
             ff.Input = f;
-            WaitUntilReady();
+            c.Go();
             Assert.IsFalse(ff.Output);
 
-            WaitUntilReady();
+            c.Go();
             Assert.IsFalse(ff.Output);
 
             ff.Input = t;
-            WaitUntilReady();
+            c.Go();
             Assert.IsTrue(ff.Output);
         }
 
@@ -60,7 +60,7 @@ namespace Tests
 
             for (int i = 0; i < 8; i++)
             {
-                WaitUntilReady();
+                c.Go();
                 for (int j = 0; j < i; j++)
                     Assert.IsTrue(ffs[j].Output);
             }
@@ -75,14 +75,14 @@ namespace Tests
 
             for (int i = 0; i < 8; i++)
             {
-                WaitUntilReady();
+                c.Go();
                 for (int j = 0; j < i; j++)
                     Assert.IsTrue(ffs[j].Output);
             }
 
             for (int i = 0; i < 8; i++)
             {
-                WaitUntilReady();
+                c.Go();
                 for (int j = 0; j < i; j++)
                     Assert.IsFalse(ffs[j].Output);
             }
