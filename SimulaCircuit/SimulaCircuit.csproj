@@ -51,7 +51,10 @@
     <Compile Include="SignalGenerators\Clock.cs" />
     <Compile Include="SignalGenerators\FastClock.cs" />
     <Compile Include="SignalGenerators\TimerClock.cs" />
+    <Compile Include="StateHolding\DFlipFlop.cs" />
     <Compile Include="StateHolding\FlipFlop.cs" />
+    <Compile Include="StateHolding\JKFlipFlop.cs" />
+    <Compile Include="StateHolding\TFlipFlop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
