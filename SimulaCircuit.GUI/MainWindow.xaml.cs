@@ -19,6 +19,8 @@ namespace SimulaCircuit.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int tabItemCount = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +29,14 @@ namespace SimulaCircuit.GUI
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+        private TabItem BuildTab(string header)
+        {
+            var ti = new TabItem{ Name="tiDraw" + tabItemCount++, Header=header };
+            tcDraw.Items.Add(ti);
+            return ti;
         }
     }
 }
