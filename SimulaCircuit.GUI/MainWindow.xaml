@@ -1,0 +1,15 @@
+﻿<Window x:Class="SimulaCircuit.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SimulaCircuit" Height="472" Width="709" Loaded="Window_Loaded">
+    <Grid Name="gridTwoColumns">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Window>
