@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using WPF.JoshSmith.Controls;
 
 namespace SimulaCircuit.GUI
 {
@@ -21,7 +22,7 @@ namespace SimulaCircuit.GUI
         public TabItem Add(string id, string header)
         {
             var ellipse = new Ellipse {Fill = Brushes.Green, Width = 30.0, Height = 30.0};
-            var canvas = new Canvas {Name = "canvas_" + id};
+            var canvas = new DragCanvas {Name = "canvas_" + id};
             canvas.Children.Add(ellipse);
             Canvas.SetLeft(ellipse, r.NextDouble()*100);
             Canvas.SetTop(ellipse, r.NextDouble() * 100);
@@ -35,6 +36,7 @@ namespace SimulaCircuit.GUI
 
         public void Remove(string id)
         {
+            mw.tcDraw.Items.Remove(tabs[id]);
             tabs.Remove(id);
         }
 
@@ -47,9 +49,9 @@ namespace SimulaCircuit.GUI
         internal class TabCanvasItem
         {
             public TabItem TabItem { get; set; }
-            public Canvas Canvas { get; set; }
+            public DragCanvas Canvas { get; set; }
 
-            public TabCanvasItem(TabItem tabItem, Canvas canvas)
+            public TabCanvasItem(TabItem tabItem, DragCanvas canvas)
             {
                 TabItem = tabItem;
                 Canvas = canvas;
