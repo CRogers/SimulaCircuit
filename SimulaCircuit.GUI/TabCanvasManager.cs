@@ -23,9 +23,6 @@ namespace SimulaCircuit.GUI
         {
             var ellipse = new Ellipse {Fill = Brushes.Green, Width = 30.0, Height = 30.0};
             var canvas = new DragCanvas {Name = "canvas_" + id};
-            canvas.Children.Add(ellipse);
-            Canvas.SetLeft(ellipse, r.NextDouble()*100);
-            Canvas.SetTop(ellipse, r.NextDouble() * 100);
             var ti = new TabItem { Name = "tab_"+id, Header = header, Content = canvas};
             var tci = new TabCanvasItem(ti, canvas);
 
