@@ -46,7 +46,7 @@
     <Compile Include="Gates\Outputs.cs" />
     <Compile Include="Gates\Wire.cs" />
     <Compile Include="IdManager.cs" />
-    <Compile Include="IOutput.cs" />
+    <Compile Include="IIo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalGenerators\BlockingClock.cs" />
     <Compile Include="SignalGenerators\Clock.cs" />

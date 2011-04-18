@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 namespace SimulaCircuit.Gates
 {
     [Serializable]
-    public abstract class Gate : XmlSerializable<Gate>, IOutput
+    public abstract class Gate : XmlSerializable<Gate>, IInputsOutput
     {
         [XmlArray]
         public IOutput[] Inputs { get; set; }
@@ -16,7 +16,7 @@ namespace SimulaCircuit.Gates
 
         protected Gate(params IOutput[] inputs)
         {
-            Id = IdManager.Next();
+            Id = IdManager.Next(this);
             Inputs = inputs;
         }
 

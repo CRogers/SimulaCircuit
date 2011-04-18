@@ -1,19 +1,19 @@
 ﻿namespace SimulaCircuit.Gates
 {
-    public class Wire : IOutput
+    public class Wire : IInputsOutput
     {
-        public IOutput Input { get; set; }
+        public IOutput[] Inputs { get; set; }
         public bool this[int i]
         {
-            get { return Input[0]; }
+            get { return Inputs[0][0]; }
         }
 
         public ulong Id { get; private set; }
 
         public Wire(IOutput input)
         {
-            Id = IdManager.Next();
-            Input = input;
+            Id = IdManager.Next(this);
+            Inputs = new[] { input };
         }
     }
 }

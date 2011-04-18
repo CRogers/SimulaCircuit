@@ -21,13 +21,13 @@ namespace Tests
 
             Assert.AreEqual(false ^ false, xor[0]);
 
-            a.Input = f; b.Input = t;
+            a.Inputs[0] = f; b.Inputs[0] = t;
             Assert.AreEqual(false ^ true, xor[0]);
 
-            a.Input = t; b.Input = f;
+            a.Inputs[0] = t; b.Inputs[0] = f;
             Assert.AreEqual(true ^ false, xor[0]);
 
-            a.Input = t; b.Input = t;
+            a.Inputs[0] = t; b.Inputs[0] = t;
             Assert.AreEqual(true ^ true, xor[0]);
         }
     }

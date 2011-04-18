@@ -20,7 +20,7 @@ namespace SimulaCircuit.StateHolding
 
         protected FlipFlop(Clock clock, IOutput input, bool initialState = false)
         {
-            Id = IdManager.Next();
+            Id = IdManager.Next(this);
 
             Input = input;
             state = initialState;

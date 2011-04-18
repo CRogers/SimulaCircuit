@@ -29,9 +29,14 @@ namespace SimulaCircuit.GUI.Data
         private T item;
 
 
-        public bool Outputs
+        public bool this[int i]
         {
-            get { return item.Outputs; }
+            get { return item[i]; }
+        }
+
+        public ulong Id
+        {
+            get { return item.Id; }
         }
 
 
