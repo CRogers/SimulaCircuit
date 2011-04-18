@@ -35,58 +35,58 @@ namespace Tests
         public void DFlipFlop()
         {
             DFlipFlop ff = new DFlipFlop(c, t, true);
-            Assert.IsTrue(ff.Output);
+            Assert.IsTrue(ff[0]);
 
             ff.Input = f;
             c.Go();
-            Assert.IsFalse(ff.Output);
+            Assert.IsFalse(ff[0]);
 
             c.Go();
-            Assert.IsFalse(ff.Output);
+            Assert.IsFalse(ff[0]);
 
             ff.Input = t;
             c.Go();
-            Assert.IsTrue(ff.Output);
+            Assert.IsTrue(ff[0]);
         }
 
         [TestMethod]
         public void TFlipFlop()
         {
             var tff = new TFlipFlop(c, t, true);
-            Assert.IsTrue(tff.Output);
+            Assert.IsTrue(tff[0]);
 
             c.Go();
-            Assert.IsFalse(tff.Output);
+            Assert.IsFalse(tff[0]);
 
             tff.Input = f;
             c.Go();
-            Assert.IsFalse(tff.Output);
+            Assert.IsFalse(tff[0]);
 
             tff.Input = t;
             c.Go();
-            Assert.IsTrue(tff.Output);
+            Assert.IsTrue(tff[0]);
         }
 
         [TestMethod]
         public void JKFlipFlop()
         {
             var jkff = new JKFlipFlop(c, f, f);
-            Assert.IsFalse(jkff.Output);
+            Assert.IsFalse(jkff[0]);
 
             c.Go();
-            Assert.IsFalse(jkff.Output);
+            Assert.IsFalse(jkff[0]);
 
             jkff.J = t;
             c.Go();
-            Assert.IsTrue(jkff.Output);
+            Assert.IsTrue(jkff[0]);
 
             jkff.K = t;
             c.Go();
-            Assert.IsFalse(jkff.Output);
+            Assert.IsFalse(jkff[0]);
 
             jkff.J = t;
             c.Go();
-            Assert.IsTrue(jkff.Output);
+            Assert.IsTrue(jkff[0]);
 
         }
 
@@ -100,7 +100,7 @@ namespace Tests
             {
                 c.Go();
                 for (int j = 0; j < i; j++)
-                    Assert.IsTrue(ffs[j].Output);
+                    Assert.IsTrue(ffs[j][0]);
             }
         }
 
@@ -115,14 +115,14 @@ namespace Tests
             {
                 c.Go();
                 for (int j = 0; j < i; j++)
-                    Assert.IsTrue(ffs[j].Output);
+                    Assert.IsTrue(ffs[j][0]);
             }
 
             for (int i = 0; i < 8; i++)
             {
                 c.Go();
                 for (int j = 0; j < i; j++)
-                    Assert.IsFalse(ffs[j].Output);
+                    Assert.IsFalse(ffs[j][0]);
             }
         }
     }

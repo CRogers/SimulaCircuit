@@ -29,9 +29,9 @@ namespace SimulaCircuit.GUI.Data
         private T item;
 
 
-        public bool Output
+        public bool Outputs
         {
-            get { return item.Output; }
+            get { return item.Outputs; }
         }
 
 

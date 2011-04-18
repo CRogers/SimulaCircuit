@@ -19,7 +19,7 @@ namespace SimulaCircuit.StateHolding
 
         protected override bool StateChange()
         {
-            return (J.Output && !state) || (!K.Output && state);
+            return (J[0] && !state) || (!K[0] && state);
         }
     }
 }

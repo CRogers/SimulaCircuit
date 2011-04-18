@@ -14,33 +14,33 @@ namespace Tests
         public void AndGate()
         {
             var ag = new AndGate(t, t, t, t, f);
-            Assert.IsFalse(ag.Output);
+            Assert.IsFalse(ag[0]);
 
             ag.Inputs = new[] {t,t,t,t,t};
-            Assert.IsTrue(ag.Output);
+            Assert.IsTrue(ag[0]);
         }
 
         [TestMethod]
         public void OrGate()
         {
             var or = new OrGate(t, t, t, t, f);
-            Assert.IsTrue(or.Output);
+            Assert.IsTrue(or[0]);
 
             or.Inputs = new[] { f, f, f, f, f };
-            Assert.IsFalse(or.Output);
+            Assert.IsFalse(or[0]);
 
             or.Inputs = new IOutput[] { f,f,f,f,f,f,f,f,f,f,t };
-            Assert.IsTrue(or.Output);
+            Assert.IsTrue(or[0]);
         }
 
         [TestMethod]
         public void XorGate()
         {
             var xg = new XorGate(t, f, t);
-            Assert.IsFalse(xg.Output);
+            Assert.IsFalse(xg[0]);
 
             xg.Inputs = new IOutput[] { t, f, t, t };
-            Assert.IsTrue(xg.Output);
+            Assert.IsTrue(xg[0]);
         }
 
         [TestMethod]
@@ -49,10 +49,10 @@ namespace Tests
             var i = new Inverter();
 
             i.Inputs[0] = t;
-            Assert.IsFalse(i.Output);
+            Assert.IsFalse(i[0]);
 
             i.Inputs[0] = f;
-            Assert.IsTrue(i.Output);
+            Assert.IsTrue(i[0]);
         }
     }
 }

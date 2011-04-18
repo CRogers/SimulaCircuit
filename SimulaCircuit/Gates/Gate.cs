@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Xml.Serialization;
-using SimulaCircuit;
 
 namespace SimulaCircuit.Gates
 {
@@ -10,14 +9,18 @@ namespace SimulaCircuit.Gates
         [XmlArray]
         public IOutput[] Inputs { get; set; }
 
+        [XmlAttribute]
+        public ulong Id { get; protected set; }
+
         protected Gate(){}
 
         protected Gate(params IOutput[] inputs)
         {
+            Id = IdManager.Next();
             Inputs = inputs;
         }
 
-        public bool Output 
+        public bool this[int i] 
         {
             get { return Func(); }
         }

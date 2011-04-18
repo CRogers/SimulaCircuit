@@ -2,18 +2,20 @@
 
 namespace SimulaCircuit.SignalGenerators
 {
-    public abstract class Clock : IOutput
+    public abstract class Clock : AutoId, IOutput
     {
         public event Action Tick;
         public event Action Tock;
 
         public Action AfterAll { get; set; }
         public ulong Step { get; protected set; }
-        public bool Output { get; protected set; }
+
+        private bool output;
+        public bool this[int i] { get { return output; } }
 
         protected virtual void Do()
         {
-            Output = !Output;
+            output = !output;
             Step++;
             if (Tick != null)
                 Tick();

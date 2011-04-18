@@ -10,7 +10,7 @@ namespace SimulaCircuit.StateHolding
 
         protected override bool StateChange()
         {
-            return Input.Output;
+            return Input[0];
         }
     }
 }

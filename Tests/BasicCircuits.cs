@@ -19,16 +19,16 @@ namespace Tests
             Wire a = new Wire(f), b = new Wire(f);
             var xor = new OrGate(new AndGate(a, new Inverter(b)), new AndGate(new Inverter(a), b));
 
-            Assert.AreEqual(false ^ false, xor.Output);
+            Assert.AreEqual(false ^ false, xor[0]);
 
             a.Input = f; b.Input = t;
-            Assert.AreEqual(false ^ true, xor.Output);
+            Assert.AreEqual(false ^ true, xor[0]);
 
             a.Input = t; b.Input = f;
-            Assert.AreEqual(true ^ false, xor.Output);
+            Assert.AreEqual(true ^ false, xor[0]);
 
             a.Input = t; b.Input = t;
-            Assert.AreEqual(true ^ true, xor.Output);
+            Assert.AreEqual(true ^ true, xor[0]);
         }
     }
 }

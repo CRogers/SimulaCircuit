@@ -1,16 +1,16 @@
 ﻿namespace SimulaCircuit.Gates
 {
-    public class True : IOutput
+    public class True : AutoId, IOutput
     {
-        public bool Output
+        public bool this[int i]
         {
             get { return true; }
         }
     }
 
-    public class False : IOutput
+    public class False : AutoId, IOutput
     {
-        public bool Output
+        public bool this[int i]
         {
             get { return false; }
         }

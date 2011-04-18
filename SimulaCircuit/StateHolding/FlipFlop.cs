@@ -1,4 +1,5 @@
-﻿using SimulaCircuit.SignalGenerators;
+﻿using System;
+using SimulaCircuit.SignalGenerators;
 
 namespace SimulaCircuit.StateHolding
 {
@@ -9,17 +10,25 @@ namespace SimulaCircuit.StateHolding
         public Clock Clock { get; set; }
         public IOutput Input { get; set; }
 
-        public bool Output { get; private set; }
+        protected bool output;
+        public bool this[int i]
+        {
+            get { return output; } 
+            private set { output = value; }
+        }
+        public ulong Id { get; protected set; }
 
         protected FlipFlop(Clock clock, IOutput input, bool initialState = false)
         {
+            Id = IdManager.Next();
+
             Input = input;
             state = initialState;
-            Output = state;
+            output = state;
 
             Clock = clock;
             clock.Tick += () => state = StateChange();
-            clock.Tock += () => Output = state;
+            clock.Tock += () => output = state;
         }
 
         protected abstract bool StateChange();
