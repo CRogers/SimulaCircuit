@@ -1,7 +1,13 @@
-﻿namespace SimulaCircuit.Gates
+﻿using System;
+using System.Xml.Serialization;
+using SimulaCircuit;
+
+namespace SimulaCircuit.Gates
 {
-    public abstract class Gate : IOutput
+    [Serializable]
+    public abstract class Gate : XmlSerializable<Gate>, IOutput
     {
+        [XmlArray]
         public IOutput[] Inputs { get; set; }
 
         protected Gate(){}
