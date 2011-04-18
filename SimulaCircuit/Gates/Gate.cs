@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Xml.Serialization;
 
 namespace SimulaCircuit.Gates
 {
     [Serializable]
-    public abstract class Gate : XmlSerializable<Gate>, IInputsOutput
+    public abstract class Gate : InputsOutput, IXmlSerializable<Gate>
     {
-        [XmlArray]
-        public IOutput[] Inputs { get; set; }
-
-        [XmlAttribute]
-        public ulong Id { get; protected set; }
-
         protected Gate(){}
 
-        protected Gate(params IOutput[] inputs)
+        protected Gate(params IInputsOutput[] inputs)
         {
-            Id = IdManager.Next(this);
             Inputs = inputs;
         }
 
-        public bool this[int i] 
+        public override bool this[int i] 
         {
             get { return Func(); }
         }
@@ -32,10 +24,10 @@ namespace SimulaCircuit.Gates
     {
         protected Gate1()
         {
-            Inputs = new IOutput[1];
+            Inputs = new IInputsOutput[1];
         }
 
-        protected Gate1(IOutput input)
+        protected Gate1(IInputsOutput input)
         {
             Inputs = new[] {input};
         }

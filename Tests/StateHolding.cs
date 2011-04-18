@@ -37,14 +37,14 @@ namespace Tests
             DFlipFlop ff = new DFlipFlop(c, t, true);
             Assert.IsTrue(ff[0]);
 
-            ff.Input = f;
+            ff.Inputs[0] = f;
             c.Go();
             Assert.IsFalse(ff[0]);
 
             c.Go();
             Assert.IsFalse(ff[0]);
 
-            ff.Input = t;
+            ff.Inputs[0] = t;
             c.Go();
             Assert.IsTrue(ff[0]);
         }
@@ -58,11 +58,11 @@ namespace Tests
             c.Go();
             Assert.IsFalse(tff[0]);
 
-            tff.Input = f;
+            tff.Inputs[0] = f;
             c.Go();
             Assert.IsFalse(tff[0]);
 
-            tff.Input = t;
+            tff.Inputs[0] = t;
             c.Go();
             Assert.IsTrue(tff[0]);
         }
@@ -76,15 +76,15 @@ namespace Tests
             c.Go();
             Assert.IsFalse(jkff[0]);
 
-            jkff.J = t;
+            jkff.Inputs[0] = t;
             c.Go();
             Assert.IsTrue(jkff[0]);
 
-            jkff.K = t;
+            jkff.Inputs[1] = t;
             c.Go();
             Assert.IsFalse(jkff[0]);
 
-            jkff.J = t;
+            jkff.Inputs[0] = t;
             c.Go();
             Assert.IsTrue(jkff[0]);
 
@@ -94,7 +94,7 @@ namespace Tests
         public void ShiftRegister()
         {
             var ffs = new DFlipFlop(c, f).Unfold(ff => new DFlipFlop(c, ff), max: 8).ToArray();
-            ffs[0].Input = t;
+            ffs[0].Inputs[0] = t;
 
             for (int i = 0; i < 8; i++)
             {
@@ -108,7 +108,7 @@ namespace Tests
         public void LoopDevice()
         {
             var ffs = new DFlipFlop(c, f).Unfold(ff => new DFlipFlop(c, ff), max: 8).ToArray();
-            ffs[0].Input = new Inverter(ffs[ffs.Length - 1]);
+            ffs[0].Inputs[0] = new Inverter(ffs[ffs.Length - 1]);
 
 
             for (int i = 0; i < 8; i++)

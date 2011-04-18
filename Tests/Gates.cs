@@ -29,7 +29,7 @@ namespace Tests
             or.Inputs = new[] { f, f, f, f, f };
             Assert.IsFalse(or[0]);
 
-            or.Inputs = new IOutput[] { f,f,f,f,f,f,f,f,f,f,t };
+            or.Inputs = new IInputsOutput[] { f,f,f,f,f,f,f,f,f,f,t };
             Assert.IsTrue(or[0]);
         }
 
@@ -39,7 +39,7 @@ namespace Tests
             var xg = new XorGate(t, f, t);
             Assert.IsFalse(xg[0]);
 
-            xg.Inputs = new IOutput[] { t, f, t, t };
+            xg.Inputs = new IInputsOutput[] { t, f, t, t };
             Assert.IsTrue(xg[0]);
         }
 

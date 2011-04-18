@@ -1,13 +1,33 @@
-﻿namespace SimulaCircuit
+﻿using System;
+using System.Xml.Serialization;
+
+namespace SimulaCircuit
 {
-    public interface IOutput
+    public interface IInputsOutput
     {
+        IInputsOutput[] Inputs { get; set; }
         bool this[int i] { get; }
         ulong Id { get; }
     }
 
-    public interface IInputsOutput : IOutput
+    [Serializable]
+    public abstract class InputsOutput : IInputsOutput
     {
-        IOutput[] Inputs { get; set; }
+        [XmlAttribute]
+        public ulong Id { get; private set; }
+
+        protected bool[] outputs;
+        public virtual bool this[int i]
+        {
+            get { return outputs[i]; } 
+        }
+
+        public IInputsOutput[] Inputs { get; set; }
+
+        protected InputsOutput()
+        {
+            Id = IdManager.Next(this);
+            outputs = new bool[1];
+        }
     }
 }

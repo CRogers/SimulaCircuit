@@ -2,7 +2,7 @@
 
 namespace SimulaCircuit.SignalGenerators
 {
-    public abstract class Clock : IOutput
+    public abstract class Clock : InputsOutput
     {
         public event Action Tick;
         public event Action Tock;
@@ -10,18 +10,12 @@ namespace SimulaCircuit.SignalGenerators
         public Action AfterAll { get; set; }
         public ulong Step { get; protected set; }
 
-        private bool output;
-        public bool this[int i] { get { return output; } }
-        public ulong Id { get; private set; }
+        public override bool this[int i] { get { return outputs[0]; } }
 
-        protected Clock()
-        {
-            Id = IdManager.Next(this);
-        }
 
         protected virtual void Do()
         {
-            output = !output;
+            outputs[0] = !outputs[0];
             Step++;
             if (Tick != null)
                 Tick();

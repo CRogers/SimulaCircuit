@@ -5,7 +5,7 @@ namespace SimulaCircuit.Gates
     public class AndGate : Gate
     {
         public AndGate(){}
-        public AndGate(params IOutput[] inputs) : base(inputs){}
+        public AndGate(params IInputsOutput[] inputs) : base(inputs) { }
 
         protected override bool Func()
         {
@@ -16,7 +16,7 @@ namespace SimulaCircuit.Gates
     public class OrGate : Gate
     {
         public OrGate(){}
-        public OrGate(params IOutput[] inputs) : base(inputs) { }
+        public OrGate(params IInputsOutput[] inputs) : base(inputs) { }
 
         protected override bool Func()
         {
@@ -27,7 +27,7 @@ namespace SimulaCircuit.Gates
     public class XorGate : Gate
     {
         public XorGate(){}
-        public XorGate(params IOutput[] inputs) : base(inputs) { }
+        public XorGate(params IInputsOutput[] inputs) : base(inputs) { }
 
         protected override bool Func()
         {
@@ -38,7 +38,7 @@ namespace SimulaCircuit.Gates
     public class Inverter : Gate1
     {
         public Inverter(){}
-        public Inverter(IOutput input) : base(input) { }
+        public Inverter(IInputsOutput input) : base(input) { }
 
         protected override bool Func()
         {

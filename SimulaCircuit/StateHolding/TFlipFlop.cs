@@ -4,13 +4,14 @@ namespace SimulaCircuit.StateHolding
 {
     public class TFlipFlop : FlipFlop
     {
-        public TFlipFlop(Clock clock, IOutput input, bool initialState = false): base(clock, input, initialState)
+        public TFlipFlop(Clock clock, IInputsOutput input, bool initialState = false)
+            : base(clock, input, initialState)
         {
         }
 
         protected override bool StateChange()
         {
-            return state ^ Input[0];
+            return state ^ Inputs[0][0];
         }
     }
 }

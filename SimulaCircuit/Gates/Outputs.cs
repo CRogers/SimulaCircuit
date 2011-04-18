@@ -1,32 +1,18 @@
 ﻿namespace SimulaCircuit.Gates
 {
-    public class True : IOutput
+    public class True : InputsOutput
     {
-        public bool this[int i]
+        public override bool this[int i]
         {
             get { return true; }
         }
-
-        public ulong Id { get; private set; }
-
-        public True()
-        {
-            Id = IdManager.Next(this);
-        }
     }
 
-    public class False : IOutput
+    public class False : InputsOutput
     {
-        public bool this[int i]
+        public override bool this[int i]
         {
             get { return false; }
-        }
-
-        public ulong Id { get; private set; }
-
-        public False()
-        {
-            Id = IdManager.Next(this);
         }
     }
 }

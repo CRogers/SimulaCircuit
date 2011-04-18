@@ -5,21 +5,17 @@ namespace SimulaCircuit.StateHolding
 {
     public class JKFlipFlop : FlipFlop
     {
-        // Hide input
-        private new IOutput Input { get; set; }
+        // J = Inputs[0], K = Inputs[1]
 
-        public IOutput J { get; set; }
-        public IOutput K { get; set; }
-
-        public JKFlipFlop(Clock clock, IOutput j, IOutput k, bool initialState = false) : base(clock, new True(), initialState)
+        public JKFlipFlop(Clock clock, IInputsOutput j, IInputsOutput k, bool initialState = false)
+            : base(clock, new True(), initialState)
         {
-            J = j;
-            K = k;
+            Inputs = new[] { j, k };
         }
 
         protected override bool StateChange()
         {
-            return (J[0] && !state) || (!K[0] && state);
+            return (Inputs[0][0] && !state) || (!Inputs[1][0] && state);
         }
     }
 }

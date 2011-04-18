@@ -56,7 +56,7 @@
     <Compile Include="StateHolding\FlipFlop.cs" />
     <Compile Include="StateHolding\JKFlipFlop.cs" />
     <Compile Include="StateHolding\TFlipFlop.cs" />
-    <Compile Include="XmlSerializable.cs" />
+    <Compile Include="IXmlSerializable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

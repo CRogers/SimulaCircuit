@@ -6,7 +6,7 @@ using WPF.JoshSmith.Controls;
 namespace SimulaCircuit.GUI.Data
 {
     [Serializable]
-    public class CircuitItem<T> : XmlSerializable<CircuitItem<T>>, IOutput where T : IOutput
+    public class CircuitItem<T> : InputsOutput, IXmlSerializable<CircuitItem<T>> where T : IInputsOutput
     {
         [XmlAttribute]
         public double Left
@@ -29,7 +29,7 @@ namespace SimulaCircuit.GUI.Data
         private T item;
 
 
-        public bool this[int i]
+        public override bool this[int i]
         {
             get { return item[i]; }
         }

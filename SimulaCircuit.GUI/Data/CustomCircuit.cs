@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace SimulaCircuit.GUI.Data
 {
     [Serializable]
-    public class CustomCircuit : XmlSerializable<CustomCircuit>
+    public class CustomCircuit : IXmlSerializable<CustomCircuit>
     {
         [XmlAttribute]
         public string Name { get; set; }
@@ -14,7 +14,7 @@ namespace SimulaCircuit.GUI.Data
         public string Description { get; set; }
 
         [XmlArray]
-        public List<IOutput> Items { get; set; }
+        public List<IInputsOutput> Items { get; set; }
 
         public CustomCircuit(string name, string description)
         {

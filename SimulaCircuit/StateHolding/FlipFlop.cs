@@ -1,34 +1,22 @@
-﻿using System;
-using SimulaCircuit.SignalGenerators;
+﻿using SimulaCircuit.SignalGenerators;
 
 namespace SimulaCircuit.StateHolding
 {
-    public abstract class FlipFlop : IOutput
+    public abstract class FlipFlop : InputsOutput
     {
         protected bool state;
 
         public Clock Clock { get; set; }
-        public IOutput Input { get; set; }
 
-        protected bool output;
-        public bool this[int i]
+        protected FlipFlop(Clock clock, IInputsOutput input, bool initialState = false)
         {
-            get { return output; } 
-            private set { output = value; }
-        }
-        public ulong Id { get; protected set; }
-
-        protected FlipFlop(Clock clock, IOutput input, bool initialState = false)
-        {
-            Id = IdManager.Next(this);
-
-            Input = input;
+            Inputs = new[] { input };
             state = initialState;
-            output = state;
+            outputs[0] = state;
 
             Clock = clock;
             clock.Tick += () => state = StateChange();
-            clock.Tock += () => output = state;
+            clock.Tock += () => outputs[0] = state;
         }
 
         protected abstract bool StateChange();
