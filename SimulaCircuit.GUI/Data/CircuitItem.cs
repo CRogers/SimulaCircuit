@@ -8,28 +8,18 @@ namespace SimulaCircuit.GUI.Data
     [Serializable]
     public class CircuitItem<T> : XmlSerializable<CircuitItem<T>>, IOutput where T : IOutput
     {
-        private int left;
         [XmlAttribute]
-        public int Left
+        public double Left
         {
-            get { return left; }
-            set
-            {
-                left = value;
-                DragCanvas.SetLeft(Canvas, value);
-            }
+            get { return DragCanvas.GetLeft(Canvas); }
+            set { DragCanvas.SetLeft(Canvas, value); }
         }
 
-        private int top;
         [XmlAttribute]
-        public int Top
+        public double Top
         {
-            get { return top; }
-            set
-            {
-                top = value;
-                DragCanvas.SetTop(Canvas, value);
-            }
+            get { return DragCanvas.GetTop(Canvas); }
+            set { DragCanvas.SetTop(Canvas, value); }
         }
 
         [XmlAttribute]

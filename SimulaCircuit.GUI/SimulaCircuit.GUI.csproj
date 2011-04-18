@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CanvasManager.cs" />
+    <Compile Include="Data\CircuitItem.cs" />
+    <Compile Include="Data\CustomCircuit.cs" />
+    <Compile Include="Data\XmlSerializable.cs" />
     <Compile Include="DragCanvas.cs" />
     <Compile Include="TabCanvasManager.cs" />
     <Page Include="MainWindow.xaml">
@@ -94,6 +97,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimulaCircuit\SimulaCircuit.csproj">
+      <Project>{BB2F2951-0A9A-4660-9BAB-91D2BCA83D11}</Project>
+      <Name>SimulaCircuit</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
