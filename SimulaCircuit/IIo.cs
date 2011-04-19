@@ -22,7 +22,7 @@ namespace SimulaCircuit
             get { return outputs[i]; } 
         }
 
-        public IInputsOutput[] Inputs { get; set; }
+        public virtual IInputsOutput[] Inputs { get; set; }
 
         protected InputsOutput()
         {
