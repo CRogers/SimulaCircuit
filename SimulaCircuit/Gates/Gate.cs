@@ -1,15 +1,23 @@
 ﻿using System;
+using SimulaCircuit.Attributes;
 
 namespace SimulaCircuit.Gates
 {
-    [Serializable]
+    /// <summary>
+    /// A gate has a variable number of inputs and one single output.
+    /// </summary>
+    [VariableInputs, Serializable]
     public abstract class Gate : InputsOutput, IXmlSerializable<Gate>
     {
         protected Gate(){}
 
-        protected Gate(params IInputsOutput[] inputs)
+        protected Gate(params Pin[] inputs)
         {
             Inputs = inputs;
+        }
+
+        protected Gate(int numInputs) : base(numInputs,1)
+        {
         }
 
         public override bool this[int i] 
@@ -18,18 +26,5 @@ namespace SimulaCircuit.Gates
         }
 
         protected abstract bool Func();
-    }
-
-    public abstract class Gate1 : Gate
-    {
-        protected Gate1()
-        {
-            Inputs = new IInputsOutput[1];
-        }
-
-        protected Gate1(IInputsOutput input)
-        {
-            Inputs = new[] {input};
-        }
     }
 }

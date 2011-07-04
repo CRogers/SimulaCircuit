@@ -55,11 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CanvasManager.cs" />
     <Compile Include="Data\CircuitItem.cs" />
     <Compile Include="Data\CustomCircuit.cs" />
     <Compile Include="DragCanvas.cs" />
-    <Compile Include="TabCanvasManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

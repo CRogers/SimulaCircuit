@@ -7,8 +7,8 @@ namespace Tests
     [TestClass]
     public class Gates
     {
-        True t = new True();
-        False f = new False();
+        Pin t = new True().ToPin(0);
+        Pin f = new False().ToPin(0);
 
         [TestMethod]
         public void AndGate()
@@ -29,7 +29,7 @@ namespace Tests
             or.Inputs = new[] { f, f, f, f, f };
             Assert.IsFalse(or[0]);
 
-            or.Inputs = new IInputsOutput[] { f,f,f,f,f,f,f,f,f,f,t };
+            or.Inputs = new[] { f,f,f,f,f,f,f,f,f,f,t };
             Assert.IsTrue(or[0]);
         }
 
@@ -39,16 +39,14 @@ namespace Tests
             var xg = new XorGate(t, f, t);
             Assert.IsFalse(xg[0]);
 
-            xg.Inputs = new IInputsOutput[] { t, f, t, t };
+            xg.Inputs = new[] { t, f, t, t };
             Assert.IsTrue(xg[0]);
         }
 
         [TestMethod]
         public void Inverter()
         {
-            var i = new Inverter();
-
-            i.Inputs[0] = t;
+            var i = new Inverter(t);
             Assert.IsFalse(i[0]);
 
             i.Inputs[0] = f;

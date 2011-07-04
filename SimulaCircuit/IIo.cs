@@ -5,9 +5,10 @@ namespace SimulaCircuit
 {
     public interface IInputsOutput
     {
-        IInputsOutput[] Inputs { get; set; }
+        Pin[] Inputs { get; set; }
         bool this[int i] { get; }
         ulong Id { get; }
+        Pin ToPin(int pinNum);
     }
 
     [Serializable]
@@ -22,12 +23,23 @@ namespace SimulaCircuit
             get { return outputs[i]; } 
         }
 
-        public virtual IInputsOutput[] Inputs { get; set; }
+        public virtual Pin[] Inputs { get; set; }
 
         protected InputsOutput()
         {
             Id = IdManager.Next(this);
-            outputs = new bool[1];
+        }
+
+        protected InputsOutput(int numInputs, int numOutputs) : this()
+        {
+            Inputs = new Pin[numInputs];
+            outputs = new bool[numOutputs];
+        }
+
+
+        public virtual Pin ToPin(int pinNum)
+        {
+            return new Pin(Id, pinNum);
         }
     }
 }
