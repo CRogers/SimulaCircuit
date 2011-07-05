@@ -25,6 +25,9 @@ namespace SimulaCircuit
 
         public virtual Pin[] Inputs { get; set; }
 
+        public int NumInputs { get { return Inputs.Length; } }
+        public int NumOutputs { get { return outputs.Length; } }
+
         protected InputsOutput()
         {
             Id = IdManager.Next(this);

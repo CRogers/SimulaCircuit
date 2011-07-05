@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.JoshSmith.Controls;
 
 namespace SimulaCircuit.GUI
 {
@@ -19,18 +20,23 @@ namespace SimulaCircuit.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TabCanvasManager tcm;
+        private CanvasManager cm;
 
         public MainWindow()
         {
             InitializeComponent();
-            tcm = new TabCanvasManager(this);
+            cm = new CanvasManager(tcDraw);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            tcm.Add("test","Test");
-            tcm.Add("test2", "Test2");
+            cm.Add("lol", "lol1");
+            cm.Add("pol", "lol2");
+            var ellipse = new Ellipse { Fill = Brushes.Green, Width = 30.0, Height = 30.0 };
+            Canvas.SetLeft(ellipse, 0);
+            Canvas.SetTop(ellipse, 0);
+            cm["lol"].Canvas.Children.Add(ellipse);
+
         }
     }
 

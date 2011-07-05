@@ -6,27 +6,30 @@ using WPF.JoshSmith.Controls;
 namespace SimulaCircuit.GUI.Data
 {
     [Serializable]
-    public class CircuitItem<T> : InputsOutput, IXmlSerializable<CircuitItem<T>> where T : InputsOutput
+    public class CircuitItem<T, D> : InputsOutput, IXmlSerializable<CircuitItem<T,D>> where T : InputsOutput where D : IDrawable
     {
         [XmlAttribute]
         public double Left
         {
-            get { return DragCanvas.GetLeft(Canvas); }
-            set { DragCanvas.SetLeft(Canvas, value); }
+            get { return Canvas.GetLeft(DragCanvas); }
+            set { Canvas.SetLeft(DragCanvas, value); }
         }
 
         [XmlAttribute]
         public double Top
         {
-            get { return DragCanvas.GetTop(Canvas); }
-            set { DragCanvas.SetTop(Canvas, value); }
+            get { return Canvas.GetTop(DragCanvas); }
+            set { Canvas.SetTop(DragCanvas, value); }
         }
 
         [XmlAttribute]
         public string ItemType { get; set; }
 
-        public Canvas Canvas;
+        public DragCanvas DragCanvas;
+
+        [XmlElement]
         private T item;
+        private D drawer;
 
 
         public override bool this[int i]
@@ -34,7 +37,7 @@ namespace SimulaCircuit.GUI.Data
             get { return item[i]; }
         }
 
-        public override IInputsOutput[] Inputs
+        public override Pin[] Inputs
         {
             get { return item.Inputs; }
             set { item.Inputs = value; }
@@ -46,11 +49,19 @@ namespace SimulaCircuit.GUI.Data
         }
 
 
-        public CircuitItem(DragCanvas dc, T item)
+        public CircuitItem(Canvas c, T item, D drawer)
         {
-            this.item = item;
-            Canvas = new Canvas();
-            dc.Children.Add(Canvas);
+            item = item;
+            this.drawer = drawer;
+            DragCanvas = new DragCanvas();
+            c.Children.Add(DragCanvas);
+        }
+
+
+
+        public void Draw()
+        {
+            drawer.Draw(DragCanvas, item);
         }
     }
 }
