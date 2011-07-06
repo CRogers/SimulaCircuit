@@ -29,7 +29,7 @@ namespace SimulaCircuit
         {
             var t = typeof (T);
 
-            if(xmls == null)
+            if(!xmls.ContainsKey(t))
                 return xmls[t] = new XmlSerializer(t);
 
             return xmls[t];
