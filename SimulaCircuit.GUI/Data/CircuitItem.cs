@@ -11,21 +11,21 @@ namespace SimulaCircuit.GUI.Data
         [XmlAttribute]
         public double Left
         {
-            get { return Canvas.GetLeft(DragCanvas); }
-            set { Canvas.SetLeft(DragCanvas, value); }
+            get { return Canvas.GetLeft(Canvas); }
+            set { Canvas.SetLeft(Canvas, value); }
         }
 
         [XmlAttribute]
         public double Top
         {
-            get { return Canvas.GetTop(DragCanvas); }
-            set { Canvas.SetTop(DragCanvas, value); }
+            get { return Canvas.GetTop(Canvas); }
+            set { Canvas.SetTop(Canvas, value); }
         }
 
         [XmlAttribute]
         public string ItemType { get; set; }
 
-        public DragCanvas DragCanvas;
+        public Canvas Canvas;
 
         [XmlElement]
         private T item;
@@ -43,7 +43,7 @@ namespace SimulaCircuit.GUI.Data
             set { item.Inputs = value; }
         }
 
-        public ulong Id
+        public int Id
         {
             get { return item.Id; }
         }
@@ -51,17 +51,19 @@ namespace SimulaCircuit.GUI.Data
 
         public CircuitItem(Canvas c, T item, D drawer)
         {
-            item = item;
+            this.item = item;
             this.drawer = drawer;
-            DragCanvas = new DragCanvas();
-            c.Children.Add(DragCanvas);
+            Canvas = new Canvas();
+            Canvas.SetLeft(Canvas, 0);
+            Canvas.SetTop(Canvas, 0);
+            c.Children.Add(Canvas);
         }
 
 
 
         public void Draw()
         {
-            drawer.Draw(DragCanvas, item);
+            drawer.Draw(Canvas, item);
         }
     }
 }

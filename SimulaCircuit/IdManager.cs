@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
+using SimulaCircuit.Gates;
 
 namespace SimulaCircuit
 {
     public static class IdManager
     {
-        // Start at 1 so 0 can be the null pointer - ie unattached wire
-        private static ulong id = 1;
-        public static Dictionary<ulong, IInputsOutput> Items = new Dictionary<ulong, IInputsOutput>();
+        private static int id = 2;
+        public static List<IInputsOutput> Items = new List<IInputsOutput> { new False(), new True() };
 
-        public static ulong Next(IInputsOutput obj)
+        public static int Next(IInputsOutput obj)
         {
-            ulong itemId = id++;
-            Items.Add(itemId, obj);
-            return itemId;
+            Items.Add(obj);
+            return id++;
         }
     }
 }

@@ -9,11 +9,10 @@ namespace SimulaCircuit.Gates
     [VariableInputs, Serializable]
     public abstract class Gate : InputsOutput, IXmlSerializable<Gate>
     {
-        protected Gate(){}
-
         protected Gate(params Pin[] inputs)
         {
             Inputs = inputs;
+            outputs = new bool[1];
         }
 
         protected Gate(int numInputs) : base(numInputs,1)

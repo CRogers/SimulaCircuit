@@ -7,7 +7,7 @@ namespace SimulaCircuit
     {
         Pin[] Inputs { get; set; }
         bool this[int i] { get; }
-        ulong Id { get; }
+        int Id { get; }
         Pin ToPin(int pinNum);
     }
 
@@ -15,7 +15,7 @@ namespace SimulaCircuit
     public abstract class InputsOutput : IInputsOutput
     {
         [XmlAttribute]
-        public ulong Id { get; private set; }
+        public virtual int Id { get; private set; }
 
         protected bool[] outputs;
         public virtual bool this[int i]
@@ -25,10 +25,15 @@ namespace SimulaCircuit
 
         public virtual Pin[] Inputs { get; set; }
 
-        public int NumInputs { get { return Inputs.Length; } }
-        public int NumOutputs { get { return outputs.Length; } }
+        public int NumInputs { get { return Inputs == null ? 0 : Inputs.Length; } }
+        public int NumOutputs { get { return outputs == null ? 0 : outputs.Length; } }
 
         protected InputsOutput()
+        {
+            InitId();
+        }
+
+        protected virtual void InitId()
         {
             Id = IdManager.Next(this);
         }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPF.JoshSmith.Controls;
 
 namespace SimulaCircuit.GUI.Drawers
 {
@@ -13,14 +8,16 @@ namespace SimulaCircuit.GUI.Drawers
     {
         public void Draw(Canvas c, InputsOutput io)
         {
-            double pinGap = 10;
-            double pinLength = 10;
+            const double pinGap = 10;
+            const double pinLength = 10;
+            var rect = new Rectangle{Width = 100, Height = 100, Stroke = Brushes.Black, Fill = Brushes.White};
+            c.Children.Add(rect);
 
             for(int i = 0; i < io.NumInputs; i++)
             {
                 var y = pinGap*(i+1);
-                c.Children.Add(new Line {X1 = 0, X2 = pinLength, Y1 = y, Y2 = y});
-                var tb = new TextBlock();
+                c.Children.Add(new Line {X1 = 0, X2 = pinLength, Y1 = y, Y2 = y, Stroke = Brushes.Black});
+                var tb = new TextBlock{ Text = i.ToString() };
                 c.Children.Add(tb);
                 Canvas.SetLeft(tb, pinGap*2);
                 Canvas.SetTop(tb, y);
