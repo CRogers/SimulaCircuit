@@ -30,7 +30,7 @@ namespace SimulaCircuit.GUI
             Canvas.SetTop(ellipse, 0);
             cm["pol"].Canvas.Children.Add(ellipse);
 
-            var ci = new CircuitItem<AndGate, BoxDrawer>(cm["lol"].Canvas, new AndGate(Pin.True, Pin.True, Pin.True), new BoxDrawer());
+            var ci = new CircuitItem<AndGate, BoxDrawer>(cm["lol"].Canvas, new AndGate(Pin.True, Pin.True, Pin.True, Pin.False), new BoxDrawer());
             ci.Draw();
         }
     }
