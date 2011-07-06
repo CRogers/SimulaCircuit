@@ -9,6 +9,7 @@ namespace SimulaCircuit
         bool this[int i] { get; }
         int Id { get; }
         Pin ToPin(int pinNum);
+        string Name { get; }
     }
 
     [Serializable]
@@ -16,6 +17,8 @@ namespace SimulaCircuit
     {
         [XmlAttribute]
         public virtual int Id { get; private set; }
+
+        public abstract string Name { get; }
 
         protected bool[] outputs;
         public virtual bool this[int i]

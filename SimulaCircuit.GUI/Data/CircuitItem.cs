@@ -8,6 +8,8 @@ namespace SimulaCircuit.GUI.Data
     [Serializable]
     public class CircuitItem<T, D> : InputsOutput, IXmlSerializable<CircuitItem<T,D>> where T : InputsOutput where D : IDrawable
     {
+        public override string Name { get { return item.Name; } }
+
         [XmlAttribute]
         public double Left
         {

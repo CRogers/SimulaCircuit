@@ -4,6 +4,7 @@ namespace SimulaCircuit.Gates
 {
     public class AndGate : Gate
     {
+        public override string Name { get { return "AND"; } }
         public AndGate(params Pin[] inputs) : base(inputs) { }
 
         protected override bool Func()
@@ -14,6 +15,7 @@ namespace SimulaCircuit.Gates
 
     public class OrGate : Gate
     {
+        public override string Name { get { return "OR"; } }
         public OrGate(params Pin[] inputs) : base(inputs) { }
 
         protected override bool Func()
@@ -24,6 +26,7 @@ namespace SimulaCircuit.Gates
 
     public class XorGate : Gate
     {
+        public override string Name { get { return "XOR"; } }
         public XorGate(params Pin[] inputs) : base(inputs) { }
 
         protected override bool Func()
@@ -34,6 +37,7 @@ namespace SimulaCircuit.Gates
 
     public class Inverter : Gate
     {
+        public override string Name { get { return "NOT"; } }
         public Inverter(Pin input) : base(input) { }
 
         protected override bool Func()

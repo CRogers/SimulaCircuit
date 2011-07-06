@@ -4,6 +4,7 @@ namespace SimulaCircuit.StateHolding
 {
     public class TFlipFlop : FlipFlop
     {
+        public override string Name { get { return "T_FLIP_FLOP"; } }
         public TFlipFlop(Clock clock, Pin input, bool initialState = false)
             : base(clock, input, initialState)
         {

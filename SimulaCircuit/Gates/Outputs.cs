@@ -2,6 +2,7 @@
 {
     public class True : InputsOutput
     {
+        public override string Name { get { return "TRUE"; } }
         protected override void InitId() { }
 
         public override int Id
@@ -17,6 +18,7 @@
 
     public class False : InputsOutput
     {
+        public override string Name { get { return "FALSE"; } }
         protected override void InitId(){}
 
         public override int Id
